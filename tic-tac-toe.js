@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     const board = document.getElementById("board");
     const divs = board.querySelectorAll("div");
+    const resetButton = document.querySelector(".btn"); // Add this line to select the reset button
 
     divs.forEach(function(div) {
         div.classList.add("square"); //using classList, adds the class "square" to each div
@@ -77,4 +78,21 @@ document.addEventListener("DOMContentLoaded", function() {
     function isBoardFull() {
         return gameBoard.every((cell) => cell !== '');
     }
+
+    resetButton.addEventListener('click', function() {
+        // Clear the game state
+        gameBoard = ['', '', '', '', '', '', '', '', ''];
+        currentPlayer = 'X';
+        gameActive = true;
+        
+        // Clear the board
+        divs.forEach(function(div) {
+            div.textContent = ''; // Clear the X or O from each square
+            div.classList.remove('you-won'); // Remove the "you-won" class
+        });
+
+        // Update the status message
+        document.getElementById('status').textContent = `Player ${currentPlayer}'s turn.`;
+    });
+
 });
