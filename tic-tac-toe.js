@@ -73,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
     
+    // Check if every square on the game board is not empty.
     function isBoardFull() {
         return gameBoard.every((cell) => cell !== '');
     }
